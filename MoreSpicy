@@ -1,3 +1,4 @@
+#### version 1. ---> fail to efficiency
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,7 +39,7 @@ class Solution {
     }
 }
 
-#### version 2
+#### version 2 ---> success
 import java.util.List;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
@@ -107,6 +108,36 @@ class Solution {
                 answer = -1;
             }
             
+        }
+        
+        return answer;
+    }
+}
+
+#### version 5 ---> success
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+
+class Solution {
+    public int solution(int[] scoville, int K) {
+        int answer = 0;
+        PriorityQueue<Integer> arr = new PriorityQueue<>();
+        for(Integer i : scoville){
+            arr.add(i);
+        }
+       
+        while(arr.size() >1 && arr.peek()<K){  
+            
+            int n1 = arr.poll();
+            int n2 = arr.poll();
+            int mix = n1+n2*2;
+            arr.add(mix);
+            answer++;
+            if(arr.size() == 1 && arr.peek()<K){
+                answer = -1;
+            }
         }
         
         return answer;
