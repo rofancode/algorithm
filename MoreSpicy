@@ -1,0 +1,39 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Solution {
+    public int solution(int[] scoville, int K) {
+        int answer = 0;
+        List<Integer> arr = new ArrayList<>();
+        for(Integer i : scoville){
+            arr.add(i);
+        }
+        int size = arr.size();
+       
+        while(size>0){  
+            //sort
+            Collections.sort(arr);
+            //element[i] < k check  
+            if(arr.get(0)>=K){
+                break;
+            }
+            if(size == 1 ){
+                answer = -1;
+                break;
+            }
+            
+                int n1 = arr.get(0);
+                int n2 = arr.get(1);
+                int mix = n1+n2*2;
+                arr.remove(0);
+                arr.remove(0);
+                arr.add(mix);
+                answer++;
+                size--;
+            
+        }
+        
+        return answer;
+    }
+}
