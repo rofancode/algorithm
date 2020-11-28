@@ -37,3 +37,78 @@ class Solution {
         return answer;
     }
 }
+
+#### version 2
+import java.util.List;
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+
+class Solution {
+    public int solution(int[] scoville, int K) {
+        int answer = 0;
+        PriorityQueue<Integer> arr = new PriorityQueue<>();
+        for(Integer i : scoville){
+            arr.add(i);
+        }
+        int size = arr.size();
+       
+        while(size>0){  
+            //sort
+       
+            //element[i] < k check  
+            if(arr.peek()>=K){
+                break;
+            }
+            if(size == 1 ){
+                answer = -1;
+                break;
+            }
+            
+                int n1 = arr.poll();
+                int n2 = arr.poll();
+                int mix = n1+n2*2;
+                arr.add(mix);
+                answer++;
+                size--;
+            
+        }
+        
+        return answer;
+    }
+}
+
+
+#### version 3   ---> fail to test case
+import java.util.List;
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+
+class Solution {
+    public int solution(int[] scoville, int K) {
+        int answer = 0;
+        PriorityQueue<Integer> arr = new PriorityQueue<>();
+        for(Integer i : scoville){
+            arr.add(i);
+        }
+        int size = arr.size();
+       
+        while(arr.size()>1 && arr.peek()<K){  
+            //sort
+       
+            //element[i] < k check  
+            
+                int n1 = arr.poll();
+                int n2 = arr.poll();
+                int mix = n1+n2*2;
+                arr.add(mix);
+                answer++;
+                
+            if(size == 1 && arr.peek()<K){
+                answer = -1;
+            }
+            
+        }
+        
+        return answer;
+    }
+}
