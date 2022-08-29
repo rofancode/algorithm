@@ -3,17 +3,8 @@ class Solution {
         if (n == 0) 
             return false;
         
+        while (n % 2 == 0) n /= 2;
         
-        while (n != 0) {
-            
-            if (n / 2 == 0 && n % 2 == 1)
-                return true;
-            
-            if (n % 2 != 0)
-                return false;
-
-            n /= 2;
-        }    
-        return true;
+        return n == 1;
     }
-}
+}// logN
