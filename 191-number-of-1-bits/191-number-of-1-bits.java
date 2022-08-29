@@ -5,20 +5,18 @@ public class Solution {
         //2나누고 % 1되면 cnt ++ 
         // 
         //
-        boolean isNegative = false;
-        if(n < 0){
-            n = n*(-1) - 1; 
-            isNegative = true;
-        }
-            
-            
-            
         int cnt = 0;
-        while(n != 0) {
-            if(n % 2 == 1)
+        int mask = 1;
+        boolean isNegative = false;
+        for (int i = 0; i < 32; i++) {
+            if ((n & mask) != 0) {
                 cnt++;
-            n /= 2;
+            }
+            mask <<= 1;
         }
-        return isNegative? 32 - cnt: cnt;
+            
+            
+            
+        return cnt;
     }
 }
