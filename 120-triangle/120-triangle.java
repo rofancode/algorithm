@@ -29,6 +29,7 @@ class Solution {
         }
         return min;
     }
-    //T.C (n) n = node num 
+    
+    //T.C (N^2) N = number of rows
     //S.C (1)
 }
