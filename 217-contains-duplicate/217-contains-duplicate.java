@@ -2,18 +2,11 @@ import java.util.Arrays;
 
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        
-        boolean isDuplicate = false;
-        
-        Arrays.sort(nums);
-        
-        for(int i = 0; i < nums.length-1; i++){
-            if(nums[i] == nums[i+1]){
-                isDuplicate = true;
-                break;
-            }
+        Set<Integer> set = new HashSet<>(nums.length);
+        for (int x: nums) {
+            if (set.contains(x)) return true;
+            set.add(x);
         }
-            
-        return isDuplicate;
+        return false;
     }
 }
