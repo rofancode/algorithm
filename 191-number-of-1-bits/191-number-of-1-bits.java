@@ -14,9 +14,7 @@ public class Solution {
             }
             mask <<= 1;
         }
-            
-            
-            
+
         return cnt;
-    }
+    }//T.C (1), S.C (1)
 }
