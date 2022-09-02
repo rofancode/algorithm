@@ -18,7 +18,7 @@ class Solution {
         
         totalSum = sum[n - 1]; 
         //System.out.println("totalSum>> "+totalSum);
-    }
+    } //T.C = N / S.C = N
     
     public int pickIndex() {
         if (n == 1)
@@ -33,7 +33,7 @@ class Solution {
         //System.out.println("idx >> "+idx);
         return idx;
         
-    }
+    } // T.C logN /S.C 1
     
     private int binSearch(double target) {
         //binary search 
@@ -52,7 +52,7 @@ class Solution {
         }
         return left;
         
-    }
+    } 
 }
 
 /**
