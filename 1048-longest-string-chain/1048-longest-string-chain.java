@@ -8,19 +8,19 @@ class Solution {
         Map<String, Integer> memo = new HashMap<>();
         
         // 글자는 글자length 순으로 정렬
-        Arrays.sort(words, (a, b) -> a.length() - b.length());
+        Arrays.sort(words, (a, b) -> a.length() - b.length()); //----T.C O(NlogN)
         
         int longestSequenceLength = 1;
         
         // words iterate
-        for (String word : words) {
+        for (String word : words) { //----T.C O(N)
             
             int currLength = 1;
             // for curr글자에서 1자씩 삭제해서 map에서 search
             // -> 있으면, 기존 length + 1 vs currentlength 중 Max를 crrentlength로 저장
-            for (int i = 0; i < word.length(); i++) {
+            for (int i = 0; i < word.length(); i++) { //----T.C O(L)
                 StringBuilder sb = new StringBuilder(word);
-                sb.deleteCharAt(i); //글자 삭제
+                sb.deleteCharAt(i); //글자 삭제 ----T.C O(L)
                 String predecessor = sb.toString();
                 int prevLength = memo.getOrDefault(predecessor, 0); //없으면 0
                 currLength = Math.max(prevLength + 1, currLength); // Max값 저장
@@ -34,5 +34,7 @@ class Solution {
         }
         
         return longestSequenceLength;
-    }
+    } // Words 갯수 = N, 가장긴 Length = L
+    // Time complexity = O(NlogN + N*L*L = N(logN + L^2)) 
+    // Space complexity = O(N) --map에 N개 만큼 words들어감
 }
