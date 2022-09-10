@@ -3,7 +3,7 @@ class Solution {
         boolean[] isVisited = new boolean[strs.length];
         List<List<String>> group = new ArrayList();
         
-        for (int i = 0; i < strs.length; i++) {
+        for (int i = 0; i < strs.length; i++) {//N
             if (!isVisited[i])
                 group.add(findAnagrams(i, strs, isVisited));
         }
@@ -19,10 +19,10 @@ class Solution {
         isVisited[idx] = true;
         
         int [] letter = new int[26];
-        for (int i = idx + 1; i < strs.length; i++) {
+        for (int i = idx + 1; i < strs.length; i++) { //N
             if (!isVisited[i] && target.length() == strs[i].length()) {
                 String str = strs[i];
-                for (int l = 0; l < target.length(); l++){
+                for (int l = 0; l < target.length(); l++){//100
                     letter[target.charAt(l) - 'a']++;
                     letter[str.charAt(l) - 'a']--;
                 }
@@ -47,4 +47,7 @@ class Solution {
         
         return anagram; 
     }
+    
+    //Time complexity O(N^2)
+    //Space complexity O(N)
 }
