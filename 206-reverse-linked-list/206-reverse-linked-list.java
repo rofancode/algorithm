@@ -39,5 +39,5 @@ class Solution {
         
         return newHead;
     }
-    //time complexity O(N) / space complexity O(1)
+    //time complexity O(N) / space complexity O(N)
 }
