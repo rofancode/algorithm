@@ -1,53 +1,26 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        boolean[] isVisited = new boolean[strs.length];
-        List<List<String>> group = new ArrayList();
+        // str           -> char array -> sort -> Key값에 넣는다. 
+        // N(strs의 len)    k(str의 len)  KlogK
+        // HashTable에 최대길이가 K인 글자 N개가 저장되므로 NK
+        // 
+        Map<String, List<String>> map = new HashMap();
         
-        for (int i = 0; i < strs.length; i++) {//N
-            if (!isVisited[i])
-                group.add(findAnagrams(i, strs, isVisited));
+        for (String str: strs) {
+            // char array
+            char[] arr = str.toCharArray();
+            Arrays.sort(arr);
+            String key = new String(arr);
+            
+            if (!map.containsKey(key))
+                map.put(key, new ArrayList());
+            
+            map.get(key).add(str);
         }
         
-        return group;
+        return new ArrayList(map.values());
     }
     
-    public List<String> findAnagrams(int idx, String[] strs, boolean[] isVisited) {
-        List<String> anagram = new ArrayList();
-        String target = strs[idx];
-        anagram.add(target);
-        
-        isVisited[idx] = true;
-        
-        int [] letter = new int[26];
-        for (int i = idx + 1; i < strs.length; i++) { //N
-            if (!isVisited[i] && target.length() == strs[i].length()) {
-                String str = strs[i];
-                for (int l = 0; l < target.length(); l++){//100
-                    letter[target.charAt(l) - 'a']++;
-                    letter[str.charAt(l) - 'a']--;
-                }
-                
-                boolean isAnagram = true;
-                for (int l = 0; l < 26; l++) {
-                    if (letter[l] != 0) {
-                        isAnagram = false;
-                        letter[l] = 0;
-                    }
-                }
-                
-                if (isAnagram) {
-                    anagram.add(str);
-                    isVisited[i] = true;
-                }
-                   
-            }
-        }
-        
-        
-        
-        return anagram; 
-    }
-    
-    //Time complexity O(N^2)
-    //Space complexity O(N)
+    //Time complexity O(NK)
+    //Space complexity O(NK)
 }
