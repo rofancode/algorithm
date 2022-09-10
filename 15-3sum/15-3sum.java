@@ -9,7 +9,7 @@ class Solution {
         //중복된 tripelt은 없음
         
         //sort
-        Arrays.sort(nums);
+        Arrays.sort(nums);   ////O(NlogN)
         
         //for target 선택 -> 같은 값이면 continue;
         //-> twosum  -> 하나만 찾으면 되나? 
@@ -19,7 +19,7 @@ class Solution {
         // -4, 1, 1, 2, 2, 3, 3,
         //     |              | 찾음 -> left를 똑으면 ++ 그 다음에 right를 옮기는 거지 
         //그리고 target이 0보다 크면 더이상 twoSum 할 필요가 없네 
-        for (int i = 0; i < nums.length; i++){
+        for (int i = 0; i < nums.length; i++){ //O(N)
             if (nums[i] > 0) return out;
             if (i != 0 && nums[i - 1] == nums[i]) continue;
             twoSum(i);
@@ -35,7 +35,7 @@ class Solution {
         int left = targetIdx + 1;
         int right = nums.length - 1;
         
-        while (left < right) {
+        while (left < right) {//O(N)
             //더해서 target과 동일한 값 찾기
             
             int sum = nums[left] + nums[right];
@@ -58,5 +58,7 @@ class Solution {
         }
         
     }
+    //time  complexity = O(N^2)
+    //space complexity = O(1)
     
 }
