@@ -16,28 +16,17 @@ class Solution {
         // 재귀 방식으로 먼저 next 호출하고 next의 next가 null일때 next변경
         // 첫번째의 경우 자신의 next는 null로 변경. okay 
         // 2개 있는 경우도 okay
-        // head가 null이거나 head가 1개밖에 없으면 head return
+        // head가 null이거나 마지막 head일때 head return
         if (head == null || head.next == null) return head;
         
-        return reverse(head);
+        ListNode newHead = reverseList(head.next);
+    
+        //next 변경 
+        head.next.next = head;
+        head.next = null;
+        return newHead;
         
     }
     
-    private ListNode reverse(ListNode node) {
-        // 해당 node의 next의 next가 null일 때 head지정
-        // 아니면 next를 호출할 거야
-        // next 지정
-        ListNode newHead = null;
-        if (node.next.next == null) {
-            newHead = node.next;
-        } else {
-            newHead = reverse(node.next);
-        }
-        //next 변경 
-        node.next.next = node;
-        node.next = null;
-        
-        return newHead;
-    }
     //time complexity O(N) / space complexity O(N)
 }
