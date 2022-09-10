@@ -10,23 +10,39 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        // 뒤에서 부터 4 <- 5 , 3 <- 4 <- 5 로 변경하기 
-        // 5에서 next 지정하려면 4 에 대한 정보가 있어야 함
-        // 4에서 5 next변경 -> 자신의 next = null 
-        // 재귀 방식으로 먼저 next 호출하고 next의 next가 null일때 next변경
-        // 첫번째의 경우 자신의 next는 null로 변경. okay 
-        // 2개 있는 경우도 okay
-        // head가 null이거나 마지막 head일때 head return
+        // 변경할 때, 1 -> 2 을 2 -> 1 로 바꿔야함 . 
+        // 2 target 일 때 2 -> 1 로 바꾸면 2의 next에 대한 정보를 모르게 됨
+        // 과거 node에 대한 정보도 알고있어야함 
+        
+        // 1. 과거 node 2.원래 target의 next node. 3 target
+        
+         
+        // target = curr 
+        // 2의 next(3) curr에 저장 
+        // 2의 next를 prev 에 저장된 1로 변경
+        // prev = target 저장. 
+        
+        //처음의 경우
+        //1일 때 target = curr = head;
+        //next는 null 이 되어야 하므로. 처음에 prev = null로 초기화 
+        //끝인 경우
+        //curr.next == null 일 때 까지 작업을 해야해서 
+        //prev = 4, curr = 5, next = null
+        //curr - null, 4로 변경 prev = 5 
+        //prev 값을 return 
         if (head == null || head.next == null) return head;
         
-        ListNode newHead = reverseList(head.next);
-    
-        //next 변경 
-        head.next.next = head;
-        head.next = null;
-        return newHead;
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null ) {
+            ListNode target = curr;
+            curr = target.next; //다음 처리할 node
+            target.next = prev; //next 변경
+            prev = target;
+        }
         
+        return prev;
     }
     
-    //time complexity O(N) / space complexity O(N)
+    //time complexity O(N) / space complexity O(1)
 }
