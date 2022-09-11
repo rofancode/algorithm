@@ -29,5 +29,5 @@ class Solution {
 
         return max;
     } //timecomplexity = O(N)
-      //space complexity = O(26) = O(1)
+      //space complexity = O(M) size of table O(26) = O(1)
 }
