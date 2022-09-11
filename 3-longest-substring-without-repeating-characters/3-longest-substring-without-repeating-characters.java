@@ -17,10 +17,9 @@ class Solution {
         while (right < sLen) {
             char c = s.charAt(right);
             
-            if (letters.containsKey(c) && letters.get(c) >= left) {
+            if (letters.containsKey(c) ) {
                 //left 변경 대상 
-                left = letters.get(c) + 1;    
-                letters.put(c, right);
+                left = Math.max(left, letters.get(c) + 1);    
             } 
             letters.put(c, right);
             max = Math.max(max, right - left + 1);
