@@ -14,7 +14,7 @@ class Solution {
         int left = 0, right = 0;
         
         int max = 0;
-        while (left < sLen && right < sLen) {
+        while (right < sLen) {
             char c = s.charAt(right);
             
             if (letters.containsKey(c) && letters.get(c) >= left) {
