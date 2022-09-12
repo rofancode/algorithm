@@ -8,24 +8,21 @@ class Solution {
         int cnt = 0;
         for (int i = 0; i < len; i++) {
             
-            int k = 0;
-            //even     
-            while (i - k >= 0 && i + 1 + k < len) {
-                if (s.charAt(i - k) != s.charAt(i + 1 + k))
-                    break;
-                k++;
-            }
-            cnt += k;
+            cnt += cntPalindromic(s, i, i + 1); //even
             
-            k = 0;
-            //odd
-            while (i - k >= 0 && i + k < len) {
-                if (s.charAt(i - k) != s.charAt(i + k))
-                    break;
-                k++;
-            }
-            cnt += k;
+            cnt += cntPalindromic(s, i, i); //odd
         }
         return cnt;
     }//time complexity = N * (N/2*2) = O(N^2), space complexity = S(1)
+    
+    private int cntPalindromic(String s, int l, int r) {
+        int k = 0;
+        
+        while (l - k >= 0 && r + k < s.length()) {
+            if (s.charAt(l - k) != s.charAt(r + k))
+                    break;
+            k++;
+        }
+        return k;
+    }
 }
