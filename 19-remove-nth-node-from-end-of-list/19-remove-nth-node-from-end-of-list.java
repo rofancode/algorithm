@@ -34,4 +34,4 @@ class Solution {
         
         return dummy.next;
     }
-}
+}//O(N) O(1)
