@@ -14,7 +14,7 @@ class Solution {
         //다음주자를 보낸다. 
         //선두주자의 next가 null일 때 
         //다음주자가 next를 replace할 위치에 도착 -> replace . 다음주자의 next = next.next
-        if (head.next == null) return head.next; //1개뿐일 때
+        //if (head.next == null) return head.next; //1개뿐일 때
         
         ListNode first = head;
         while(n > 0) {
