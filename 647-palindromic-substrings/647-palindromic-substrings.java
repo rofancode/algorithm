@@ -10,7 +10,7 @@ class Solution {
             
             int k = 0;
             //even     
-            while ( i - k >= 0 && i + 1 + k < len) {
+            while (i - k >= 0 && i + 1 + k < len) {
                 if (s.charAt(i - k) != s.charAt(i + 1 + k))
                     break;
                 k++;
@@ -27,5 +27,5 @@ class Solution {
             cnt += k;
         }
         return cnt;
-    }
+    }//time complexity = N * (N/2*2) = O(N^2), space complexity = S(1)
 }
