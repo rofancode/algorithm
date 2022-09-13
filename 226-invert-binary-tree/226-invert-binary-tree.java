@@ -36,5 +36,5 @@ class Solution {
         return root;
     }
     // T.O(n) - invert위해 모든 노드 방문
-    // S.O()
+    // S.O(n) - 최대 n만큼 queue에 저장
 }
