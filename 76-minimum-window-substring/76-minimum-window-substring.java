@@ -68,4 +68,5 @@ class Solution {
         
         return win[0] == -1 ? "" : s.substring(win[1], win[2] + 1);
     }
-}
+}//O(S + T) loof 에서 s 글자 check, 앞에서 map 에 T값 넣음
+// O(S + T) 
