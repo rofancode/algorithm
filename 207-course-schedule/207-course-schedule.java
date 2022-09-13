@@ -57,7 +57,20 @@ class Solution {
         
         return isCycle;
     }
-    //time complexity = O(P + N*N) -> 최악의 상황에서 모든 N에 대해 backtracking
-    //space complexity = O(P + N) -> map이랑 boolean 배열 + recursion 최악으로 N
 }
 
+/*
+tracking에 기존 path기록 안했을 경우
+- time complexity = O(P + N*N) -> pre..훓으면서 map만들기 O(P)
+최악으로 N개 courses에 대해서 각 course별로 tracking -> 시그마 N -> (N+1)N/2 -> N^2
+- space complexity = O(P + N) -> map이랑 boolean 배열 + recursion 최악으로 N
+
+tracking에 기존 path기록 한 경우
+- time complexity = O(P + N) 
+O(P) : map 만들기
+O(N) : 한번 지나간 path에 대해 기록되어있어 각 course에 대해 1번씩 만 check하면됨
+- space complexity = O(P + N) 
+O(P) : map 만들기
+O(N) : 배열 만들기, 모든 courses(N)에 대해 recursion
+
+*/
